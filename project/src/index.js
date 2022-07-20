@@ -4,6 +4,9 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { QueryClientProvider, QueryClient } from "react-query";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Todo from "./components/Todo";
+import Home from "./components/Home";
 
 const queryClient = new QueryClient();
 
@@ -11,7 +14,13 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <App />
+      <BrowserRouter>
+        <App />
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route path="/:id" element={<Todo />} />
+        </Routes>
+      </BrowserRouter>
     </QueryClientProvider>
   </React.StrictMode>
 );

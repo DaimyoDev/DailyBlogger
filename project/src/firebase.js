@@ -14,7 +14,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 // Intialize the services
-const database = getFirestore();
+export const database = getFirestore();
 
 // Collection Reference
 export const collectionReference = collection(database, "todos");
