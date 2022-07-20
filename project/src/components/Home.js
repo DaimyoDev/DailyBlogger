@@ -1,11 +1,12 @@
 import "../App.css";
-import { collectionReference } from "../firebase";
+import { collectionReference, database } from "../firebase";
 import {
   useFirestoreQuery,
   useFirestoreCollectionMutation,
 } from "@react-query-firebase/firestore";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { doc, deleteDoc } from "firebase/firestore";
 
 function Home() {
   const addTodo = useFirestoreCollectionMutation(collectionReference);
@@ -15,6 +16,7 @@ function Home() {
   let content;
   const [title, setTitle] = useState();
   const [description, setDescription] = useState();
+  const [id, setId] = useState();
 
   const snapshot = todosQuery.data;
   if (snapshot !== null) {
@@ -27,12 +29,13 @@ function Home() {
         const data = docSnapshot.data();
         return (
           <div key={docSnapshot.id}>
-            {console.log(data)}
+            <ul>
+              <p>Title: {data.title}</p>
+              <p>Description: {data.description}</p>
+              <p>Document Id: {docSnapshot.id}</p>
+            </ul>
             <Link to={`/${docSnapshot.id}`}>
-              <ul>
-                <p>{data.title}</p>
-                <li>{data.description}</li>
-              </ul>
+              <button>Go to page</button>
             </Link>
           </div>
         );
@@ -83,6 +86,27 @@ function Home() {
         >
           Add Todo
         </button>
+      </form>
+      <form
+        onSubmit={async (e) => {
+          e.preventDefault();
+          await deleteDoc(doc(database, "todos", id));
+          setId("");
+        }}
+      >
+        <h1>Delete a Todo</h1>
+        <label htmlFor="id">Todo Id:</label>
+        <input
+          type="text"
+          name="id"
+          placeholder="Add a todo id"
+          value={id}
+          required
+          onChange={(e) => {
+            setId(e.target.value);
+          }}
+        />
+        <button type="submit">Delete Todo</button>
       </form>
     </div>
   );
