@@ -5,8 +5,10 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { QueryClientProvider, QueryClient } from "react-query";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Todo from "./components/Todo";
-import Home from "./components/Home";
+import EachBlog from "./routes/EachBlog";
+import Home from "./routes/Home";
+import Navbar from "./components/Navbar";
+import About from "./routes/About";
 
 const queryClient = new QueryClient();
 
@@ -15,10 +17,12 @@ root.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
+        <Navbar />
         <App />
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route path="/:id" element={<Todo />} />
+          <Route path="/:id" element={<EachBlog />} />
+          <Route exact path="/about" element={<About />} />
         </Routes>
       </BrowserRouter>
     </QueryClientProvider>
