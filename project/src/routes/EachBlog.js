@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import { database } from "../firebase";
 import { doc, getDoc } from "firebase/firestore";
 
-function Todo() {
+function EachBlog() {
   const currentBlog = useLocation();
   const docRef = doc(database, "todos", currentBlog.pathname);
   const [content, setContent] = useState();
@@ -16,7 +16,7 @@ function Todo() {
         setContent(
           <div>
             <h3>{finalData.title}</h3>
-            <h3>{finalData.description}</h3>
+            <h3>{finalData.article}</h3>
           </div>
         );
       }
@@ -27,4 +27,4 @@ function Todo() {
   return <div>{content}</div>;
 }
 
-export default Todo;
+export default EachBlog;
