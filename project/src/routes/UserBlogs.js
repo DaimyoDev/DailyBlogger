@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useFirestoreQuery } from "@react-query-firebase/firestore";
 import { collectionReference, database } from "../firebase";
 import { Link } from "react-router-dom";
@@ -13,8 +13,8 @@ function UserBlogs() {
   const setCurrentPostId = useStore((state) => state.setCurrentPostId);
   const setPostTitle = useStore((state) => state.setPostTitle);
   const setPostContent = useStore((state) => state.setPostContent);
-  let content;
 
+  let content;
   const snapshot = todosQuery.data;
   if (snapshot !== null) {
     if (todosQuery.isLoading) {
@@ -22,6 +22,9 @@ function UserBlogs() {
     } else if (todosQuery.isError) {
       content = <p>{todosQuery.error}</p>;
     } else {
+      if (snapshot.docs === null) {
+        return;
+      }
       content = snapshot.docs.map((docSnapshot) => {
         const data = docSnapshot.data();
         if (data.userId === auth.currentUser.uid) {
@@ -31,14 +34,14 @@ function UserBlogs() {
                 <Link to={`/${docSnapshot.id}`}>
                   <p>Title: {data.title}</p>
                   <p>Description: {data.article}</p>
-                  <button
-                    onClick={async () => {
-                      await deleteDoc(doc(database, "todos", docSnapshot.id));
-                    }}
-                  >
-                    Delete Post
-                  </button>
                 </Link>
+                <button
+                  onClick={async () => {
+                    await deleteDoc(doc(database, "todos", docSnapshot.id));
+                  }}
+                >
+                  Delete Post
+                </button>
                 <Link
                   to={`/${docSnapshot.id}/edit`}
                   onClick={() => {

@@ -13,12 +13,15 @@ function EachBlog() {
       const docData = await getDoc(docRef);
       if (docData !== null) {
         const finalData = docData.data();
-        setContent(
-          <div>
-            <h3>{finalData.title}</h3>
-            <h3>{finalData.article}</h3>
-          </div>
-        );
+        if (finalData !== undefined) {
+          setContent(
+            <div>
+              <h3>{finalData.title}</h3>
+              <h3>{finalData.article}</h3>
+              <h3>{finalData.author}</h3>
+            </div>
+          );
+        }
       }
     };
     docSnapshot();

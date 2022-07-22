@@ -2,6 +2,7 @@ import "../App.css";
 import { collectionReference } from "../firebase";
 import { useFirestoreQuery } from "@react-query-firebase/firestore";
 import { Link } from "react-router-dom";
+import React from "react";
 
 function Home() {
   const todosQuery = useFirestoreQuery(["todos"], collectionReference, {
@@ -34,7 +35,12 @@ function Home() {
     }
   }
 
-  return <div className="App">{content}</div>;
+  return (
+    <div className="App">
+      <h1>All Posts</h1>
+      {content}
+    </div>
+  );
 }
 
 export default Home;

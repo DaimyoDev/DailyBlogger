@@ -7,6 +7,7 @@ const useStore = create((set) => ({
   currentPostId: "",
   oldPostTitle: "",
   oldPostContent: "",
+  search: "",
   toggleLoggedIn: (logStatus) =>
     set(() => ({
       loggedIn: logStatus,
@@ -30,6 +31,10 @@ const useStore = create((set) => ({
   setPostContent: (postContent) =>
     set(() => ({
       oldPostContent: postContent,
+    })),
+  setSearch: (search) =>
+    set(() => ({
+      search: search,
     })),
 }));
 

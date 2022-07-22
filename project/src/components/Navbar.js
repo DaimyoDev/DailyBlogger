@@ -79,7 +79,11 @@ function Navbar() {
           hidden={logStatus ? false : true}
           className="w-14 flex flex-row text-white font-semi-bold"
         >
-          <img src={userPhoto} alt="" className={logStatus ? "" : "hide"}></img>
+          <img
+            src={userPhoto}
+            alt=""
+            className={logStatus ? "rounded-full" : "hide"}
+          ></img>
           <h1 className="ml-2" hidden={logStatus ? false : true}>
             {displayName}
           </h1>
