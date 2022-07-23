@@ -4,6 +4,7 @@ import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
 import { auth } from "../firebase";
 import useStore from "../store";
 import "./Navbar.css";
+import { useNavigate } from "react-router-dom";
 
 function Navbar() {
   const logStatus = useStore((state) => state.loggedIn);
@@ -12,25 +13,26 @@ function Navbar() {
   const setUserPhoto = useStore((state) => state.setUserPhoto);
   const displayName = useStore((state) => state.displayName);
   const setDisplayName = useStore((state) => state.setDisplayName);
+  let navigate = useNavigate();
 
   return (
-    <div className="flex flex-row w-screen bg-sky-500 h-[5rem]">
+    <div className="flex flex-row w-screen bg-sky-800 h-[5rem] shadow-sm shadow-zinc-500">
       <h1 className="text-emerald-300 mr-[30rem] ml-[5rem] mt-[1.3rem] text-3xl font-bold">
         DailyBlogger
       </h1>
       <ul className="flex flex-row justify-center text-emerald-600 text-xl items-center">
-        <li className="bg-white rounded-xl p-2 px-8 mr-[3rem]">
+        <li className="bg-white rounded-xl p-2 px-8 mr-[3rem] hover:bg-blue-900 transition-all duration-300 shadow-lg shadow-zinc-700">
           <Link to={"/about"}>
-            <h1>About</h1>
+            <p>About</p>
           </Link>
         </li>
-        <li className="bg-white rounded-xl p-2 px-8 mr-[3rem]">
+        <li className="bg-white rounded-xl p-2 px-8 mr-[3rem] hover:bg-blue-900 transition-all duration-300 shadow-lg shadow-zinc-700">
           <Link to={""}>
-            <h1>Posts</h1>
+            <p>Posts</p>
           </Link>
         </li>
         <li
-          className="bg-white rounded-xl p-2 px-8 mr-[3rem]"
+          className="bg-white rounded-xl p-2 px-8 mr-[3rem] hover:bg-blue-900 transition-all duration-300 shadow-lg shadow-zinc-700"
           hidden={logStatus ? true : false}
         >
           <button
@@ -43,36 +45,37 @@ function Navbar() {
               });
             }}
           >
-            <h1>Sign In</h1>
+            <p>Sign In</p>
           </button>
         </li>
         <li
-          className="bg-white rounded-xl p-2 px-8 mr-[3rem]"
+          className="bg-white rounded-xl p-2 px-8 mr-[3rem] hover:bg-blue-900 transition-all duration-300 shadow-lg shadow-zinc-700"
           hidden={logStatus ? false : true}
         >
           <button
             onClick={() => {
               signOut(auth);
               toggleLoggedIn(false);
+              navigate("");
             }}
           >
-            <h1>Sign Out</h1>
+            <p>Sign Out</p>
           </button>
         </li>
         <li
-          className="bg-white rounded-xl p-2 px-8 mr-[3rem]"
+          className="bg-white rounded-xl p-2 px-8 mr-[3rem] hover:bg-blue-900 transition-all duration-300 shadow-lg shadow-zinc-700"
           hidden={logStatus ? false : true}
         >
           <Link to={"/myposts"}>
-            <h1>My Posts</h1>
+            <p>My Posts</p>
           </Link>
         </li>
         <li
-          className="bg-white rounded-xl p-2 px-8 mr-[3rem]"
+          className="bg-white rounded-xl p-2 px-8 mr-[3rem] hover:bg-blue-900 transition-all duration-300 shadow-lg shadow-zinc-700"
           hidden={logStatus ? false : true}
         >
           <Link to={"/createposts"}>
-            <h1>Create Posts</h1>
+            <p>Create Posts</p>
           </Link>
         </li>
         <li
@@ -84,9 +87,9 @@ function Navbar() {
             alt=""
             className={logStatus ? "rounded-full" : "hide"}
           ></img>
-          <h1 className="ml-2" hidden={logStatus ? false : true}>
+          <p className="ml-2" hidden={logStatus ? false : true}>
             {displayName}
-          </h1>
+          </p>
         </li>
       </ul>
     </div>

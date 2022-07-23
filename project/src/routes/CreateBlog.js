@@ -9,38 +9,48 @@ function CreateBlog() {
   const addTodo = useFirestoreCollectionMutation(collectionReference);
   const logStatus = useStore((state) => state.loggedIn);
   return (
-    <div>
-      <h1>Create a Post</h1>
+    <div className="flex flex-col justify-center items-center">
+      <h1 className="text-7xl uppercase font-bold text-blue-500 m-[3rem]">
+        Create a Post:
+      </h1>
       <form
+        className="flex flex-col bg-sky-700 p-5 w-[50rem] text-white text-3xl rounded-xl"
         onSubmit={(e) => {
           e.preventDefault();
           setTitle("");
           setArticle("");
         }}
       >
-        <label htmlFor="title">Post Title:</label>
+        <label htmlFor="title" className="uppercase font-bold mb-3">
+          Post Title:
+        </label>
         <input
           type="text"
           name="title"
           placeholder="Add a post title"
+          className="text-blue-100 text-xl bg-sky-700 border"
           value={title}
           required
           onChange={(e) => {
             setTitle(e.target.value);
           }}
         />
-        <label htmlFor="article">Post Description:</label>
+        <label htmlFor="article" className="uppercase font-bold mb-3">
+          Post Description:
+        </label>
         <textarea
           name="article"
           value={article}
           placeholder="Add the post text"
           required
+          className="text-blue-100 text-xl bg-sky-700 border h-[30rem]"
           onChange={(e) => {
             setArticle(e.target.value);
           }}
         />
         <button
           type="submit"
+          className="bg-white rounded-xl p-2 px-8 text-emerald-600 hover:bg-blue-900 transition-all duration-300 shadow-lg shadow-zinc-700 mt-3"
           onClick={() => {
             if (logStatus === true) {
               addTodo.mutate({

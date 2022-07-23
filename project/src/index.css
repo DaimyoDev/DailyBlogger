@@ -10,6 +10,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   box-sizing: border-box;
+  overflow-x: hidden;
+  background-color: rgb(186 230 253);
+}
+h1 {
+  text-shadow: 2px 2px rgb(15 23 42);
 }
 
 code {

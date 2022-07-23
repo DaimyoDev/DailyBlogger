@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useFirestoreQuery } from "@react-query-firebase/firestore";
 import { collectionReference, database } from "../firebase";
 import { Link } from "react-router-dom";
@@ -13,6 +13,7 @@ function UserBlogs() {
   const setCurrentPostId = useStore((state) => state.setCurrentPostId);
   const setPostTitle = useStore((state) => state.setPostTitle);
   const setPostContent = useStore((state) => state.setPostContent);
+  const logStatus = useStore((state) => state.loggedIn);
 
   let content;
   const snapshot = todosQuery.data;
@@ -29,29 +30,44 @@ function UserBlogs() {
         const data = docSnapshot.data();
         if (data.userId === auth.currentUser.uid) {
           return (
-            <div key={docSnapshot.id}>
-              <ul>
+            <div
+              key={docSnapshot.id}
+              className="w-[50rem] bg-sky-700 rounded-lg mt-5 p-5 shadow-lg shadow-zinc-700"
+            >
+              <ul className="flex flex-col justify-center items-center">
                 <Link to={`/${docSnapshot.id}`}>
-                  <p>Title: {data.title}</p>
-                  <p>Description: {data.article}</p>
+                  <p className="text-4xl text-emerald-300 m-3 uppercase font-bold">
+                    Title: {data.title}
+                  </p>
+                  <p className="text-4xl text-emerald-300 m-3">
+                    Description: {data.article}
+                  </p>
                 </Link>
-                <button
-                  onClick={async () => {
-                    await deleteDoc(doc(database, "todos", docSnapshot.id));
-                  }}
-                >
-                  Delete Post
-                </button>
-                <Link
-                  to={`/${docSnapshot.id}/edit`}
-                  onClick={() => {
-                    setCurrentPostId(docSnapshot.id);
-                    setPostContent(data.article);
-                    setPostTitle(data.title);
-                  }}
-                >
-                  Edit Post
-                </Link>
+                <li>
+                  <button
+                    className="bg-white rounded-xl p-2 px-8 text-emerald-600 hover:bg-blue-900 transition-all duration-300 shadow-lg shadow-zinc-700 mt-3 text-xl m-3"
+                    onClick={async () => {
+                      if (!logStatus) {
+                        alert("You must be logged in to delete a post!");
+                        return;
+                      }
+                      await deleteDoc(doc(database, "todos", docSnapshot.id));
+                    }}
+                  >
+                    Delete Post
+                  </button>
+                  <Link
+                    to={`/${docSnapshot.id}/edit`}
+                    className="bg-white rounded-xl p-2 px-8 text-emerald-600 hover:bg-blue-900 transition-all duration-300 shadow-lg shadow-zinc-700 mt-3 text-xl m-3"
+                    onClick={() => {
+                      setCurrentPostId(docSnapshot.id);
+                      setPostContent(data.article);
+                      setPostTitle(data.title);
+                    }}
+                  >
+                    Edit Post
+                  </Link>
+                </li>
               </ul>
             </div>
           );
@@ -61,8 +77,10 @@ function UserBlogs() {
   }
 
   return (
-    <div>
-      <h1>Your Posts</h1>
+    <div className="flex justify-center items-center flex-col">
+      <h1 className="text-7xl font-bold uppercase text-blue-500 mb-[1rem] mt-[1rem]">
+        Your Posts:
+      </h1>
       {content}
     </div>
   );
