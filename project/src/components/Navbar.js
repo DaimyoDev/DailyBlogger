@@ -17,15 +17,15 @@ function Navbar() {
 
   return (
     <div className="flex flex-row w-screen bg-sky-800 h-[5rem] shadow-sm shadow-zinc-500">
-      <h1 className="text-emerald-300 mr-[30rem] ml-[5rem] mt-[0.5rem] text-5xl font-bold">
+      <h1 className="text-emerald-300 mr-[25rem] ml-[5rem] mt-[0.5rem] text-5xl font-bold">
         Daily<span className="text-sky-300">Blogger</span>
       </h1>
       <ul className="flex flex-row justify-center text-emerald-600 text-xl items-center">
-        <li className="bg-white rounded-xl p-2 px-8 mr-[3rem] hover:bg-blue-900 transition-all duration-300 shadow-lg shadow-zinc-700">
+        {/* <li className="bg-white rounded-xl p-2 px-8 mr-[3rem] hover:bg-blue-900 transition-all duration-300 shadow-lg shadow-zinc-700">
           <Link to={"/about"}>
             <p>About</p>
           </Link>
-        </li>
+        </li> */}
         <li className="bg-white rounded-xl p-2 px-8 mr-[3rem] hover:bg-blue-900 transition-all duration-300 shadow-lg shadow-zinc-700">
           <Link to={""}>
             <p>Posts</p>
