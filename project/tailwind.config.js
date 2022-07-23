@@ -6,6 +6,10 @@ module.exports = {
       fontFamily: {
         lato: "Lato",
       },
+      screens: {
+        tablet: "600px",
+        desktop: "1200px",
+      },
     },
   },
   plugins: [],

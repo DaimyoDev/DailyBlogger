@@ -23,10 +23,10 @@ function Home() {
           <Link to={`/${docSnapshot.id}`}>
             <div
               key={docSnapshot.id}
-              className=" m-5 w-[70rem] m-h-[15rem] flex flex-col text-center bg-sky-700 p-4 py-10 text-xl rounded-lg shadow-lg shadow-zinc-900 hover:bg-blue-900 transition-all duration-300"
+              className=" m-5 tablet:w-[70rem] m-h-[15rem] flex flex-col text-center bg-sky-700 p-4 py-10 text-xl rounded-lg shadow-lg shadow-zinc-900 hover:bg-blue-900 transition-all duration-300 w-[20rem]"
             >
               <ul>
-                <p className="text-5xl font-bold uppercase text-emerald-300 mb-[2rem]">
+                <p className="text-2xl font-bold uppercase text-emerald-300 mb-[2rem] tablet:text-5xl">
                   {data.title}
                 </p>
                 <p className="text-white text-lg leading-[2rem] mb-[0.3rem]">

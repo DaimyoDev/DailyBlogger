@@ -16,23 +16,23 @@ function Navbar() {
   let navigate = useNavigate();
 
   return (
-    <div className="flex flex-row w-screen bg-sky-800 h-[5rem] shadow-sm shadow-zinc-500">
-      <h1 className="text-emerald-300 mr-[25rem] ml-[5rem] mt-[0.5rem] text-5xl font-bold">
+    <div className="flex tablet:flex-row w-screen bg-sky-800 tablet:h-[5rem] shadow-sm shadow-zinc-500 flex-col h-fit py-3 tablet:py-0">
+      <h1 className="text-emerald-300 table:mr-[25rem] tablet:ml-[5rem] mt-[0.5rem] text-5xl font-bold mr-[0.3rem] ml-[0.3rem] self-center tablet:self-start tablet:mt[2rem]">
         Daily<span className="text-sky-300">Blogger</span>
       </h1>
-      <ul className="flex flex-row justify-center text-emerald-600 text-xl items-center">
+      <ul className="flex tablet:flex-row justify-center text-emerald-600 text-xl items-center flex-col w-screen">
         {/* <li className="bg-white rounded-xl p-2 px-8 mr-[3rem] hover:bg-blue-900 transition-all duration-300 shadow-lg shadow-zinc-700">
           <Link to={"/about"}>
             <p>About</p>
           </Link>
         </li> */}
-        <li className="bg-white rounded-xl p-2 px-8 mr-[3rem] hover:bg-blue-900 transition-all duration-300 shadow-lg shadow-zinc-700">
+        <li className="bg-white rounded-xl p-2 px-8 tablet:mr-[3rem] mt-5 tablet:mt-0 hover:bg-blue-900 transition-all duration-300 shadow-lg shadow-zinc-700 mr-[0.3rem]">
           <Link to={""}>
             <p>Posts</p>
           </Link>
         </li>
         <li
-          className="bg-white rounded-xl p-2 px-8 mr-[3rem] hover:bg-blue-900 transition-all duration-300 shadow-lg shadow-zinc-700"
+          className="bg-white rounded-xl p-2 px-8 tablet:mr-[3rem] mr-[0.3rem] mt-3 tablet:mt-0 hover:bg-blue-900 transition-all duration-300 shadow-lg shadow-zinc-700"
           hidden={logStatus ? true : false}
         >
           <button
@@ -49,7 +49,7 @@ function Navbar() {
           </button>
         </li>
         <li
-          className="bg-white rounded-xl p-2 px-8 mr-[3rem] hover:bg-blue-900 transition-all duration-300 shadow-lg shadow-zinc-700"
+          className="bg-white rounded-xl p-2 px-8 tablet:mr-[3rem] mr-[0.3rem] mt-3 tablet:mt-0 hover:bg-blue-900 transition-all duration-300 shadow-lg shadow-zinc-700"
           hidden={logStatus ? false : true}
         >
           <button
@@ -63,7 +63,7 @@ function Navbar() {
           </button>
         </li>
         <li
-          className="bg-white rounded-xl p-2 px-8 mr-[3rem] hover:bg-blue-900 transition-all duration-300 shadow-lg shadow-zinc-700"
+          className="bg-white rounded-xl p-2 px-8 tablet:mr-[3rem] mr-[0.3rem] mt-3 tablet:mt-0 hover:bg-blue-900 transition-all duration-300 shadow-lg shadow-zinc-700"
           hidden={logStatus ? false : true}
         >
           <Link to={"/myposts"}>
@@ -71,7 +71,7 @@ function Navbar() {
           </Link>
         </li>
         <li
-          className="bg-white rounded-xl p-2 px-8 mr-[3rem] hover:bg-blue-900 transition-all duration-300 shadow-lg shadow-zinc-700"
+          className="bg-white rounded-xl p-2 px-8 tablet:mr-[3rem] mr-[0.3rem] mt-3 tablet:mt-0 hover:bg-blue-900 transition-all duration-300 shadow-lg shadow-zinc-700"
           hidden={logStatus ? false : true}
         >
           <Link to={"/createposts"}>

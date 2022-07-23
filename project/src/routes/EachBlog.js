@@ -19,10 +19,10 @@ function EachBlog() {
         if (finalData !== undefined) {
           setContent(
             <div className="flex flex-col justify-center text-emerald-600 text-xl items-center">
-              <h2 className="uppercase text-7xl text-sky-500 m-3">
+              <h2 className="uppercase tablet:text-7xl text-sky-500 m-3 text-2xl">
                 {finalData.title}
               </h2>
-              <h3 className="text-white text-2xl mt-6 mb-6 w-[70rem]">
+              <h3 className="text-white text-2xl mt-6 mb-6 tablet:w-[70rem] w-fit text-center">
                 {finalData.article}
               </h3>
               <h3 className="text-emerald-400 text-3xl mt-6 mb-6">

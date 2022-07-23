@@ -32,7 +32,7 @@ function UserBlogs() {
           return (
             <div
               key={docSnapshot.id}
-              className="w-[70rem] bg-sky-700 rounded-lg mt-5 p-5 shadow-lg shadow-zinc-700 text-center"
+              className="m-5 tablet:w-[70rem] m-h-[15rem] flex flex-col text-center bg-sky-700 p-4 py-10 text-xl rounded-lg shadow-lg shadow-zinc-900 hover:bg-blue-900 transition-all duration-300 w-[20rem]"
             >
               <ul className="flex flex-col justify-center items-center">
                 <Link to={`/${docSnapshot.id}`}>
@@ -45,7 +45,7 @@ function UserBlogs() {
                 </Link>
                 <li>
                   <button
-                    className="bg-white rounded-xl p-2 px-8 text-emerald-600 hover:bg-blue-900 transition-all duration-300 shadow-lg shadow-zinc-700 mt-3 text-xl m-3"
+                    className="bg-white rounded-xl p-2 px-3 text-emerald-600 hover:bg-blue-900 transition-all duration-300 shadow-lg shadow-zinc-700 mt-3 text-xl m-3 tablet:mr-[3rem] mr-[0.3rem] tablet:mt-0 "
                     onClick={async () => {
                       if (!logStatus) {
                         alert("You must be logged in to delete a post!");
@@ -58,7 +58,7 @@ function UserBlogs() {
                   </button>
                   <Link
                     to={`/${docSnapshot.id}/edit`}
-                    className="bg-white rounded-xl p-2 px-8 text-emerald-600 hover:bg-blue-900 transition-all duration-300 shadow-lg shadow-zinc-700 mt-3 text-xl m-3"
+                    className="bg-white rounded-xl p-2 px-3 text-emerald-600 hover:bg-blue-900 transition-all duration-300 shadow-lg shadow-zinc-700 mt-3 text-xl m-3 tablet:mr-[3rem] mr-[0.3rem] tablet:mt-0 "
                     onClick={() => {
                       setCurrentPostId(docSnapshot.id);
                       setPostContent(data.article);
@@ -78,7 +78,7 @@ function UserBlogs() {
 
   return (
     <div className="flex justify-center items-center flex-col">
-      <h1 className="text-7xl font-bold uppercase text-blue-500 mb-[1rem] mt-[1rem]">
+      <h1 className="text-7xl font-bold uppercase text-blue-500 mb-[1rem] mt-[1rem] text-center">
         Your Posts:
       </h1>
       {content}
