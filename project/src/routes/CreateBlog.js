@@ -10,11 +10,11 @@ function CreateBlog() {
   const logStatus = useStore((state) => state.loggedIn);
   return (
     <div className="flex flex-col justify-center items-center">
-      <h1 className="text-7xl uppercase font-bold text-blue-500 m-[3rem]">
+      <h1 className="text-7xl uppercase font-bold text-blue-500 m-[3rem] text-center">
         Create a Post:
       </h1>
       <form
-        className="flex flex-col bg-sky-700 p-5 w-[50rem] text-white text-3xl rounded-xl"
+        className="flex flex-col bg-sky-700 p-5 tablet:w-[50rem] text-white text-3xl rounded-xl"
         onSubmit={(e) => {
           e.preventDefault();
           setTitle("");
