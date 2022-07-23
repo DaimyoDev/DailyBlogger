@@ -23,7 +23,7 @@ function Home() {
           <Link to={`/${docSnapshot.id}`}>
             <div
               key={docSnapshot.id}
-              className=" m-5 w-[50rem] m-h-[15rem] flex flex-col text-center bg-sky-700 p-4 py-10 text-xl rounded-lg shadow-lg shadow-zinc-900 hover:bg-blue-900 transition-all duration-300"
+              className=" m-5 w-[70rem] m-h-[15rem] flex flex-col text-center bg-sky-700 p-4 py-10 text-xl rounded-lg shadow-lg shadow-zinc-900 hover:bg-blue-900 transition-all duration-300"
             >
               <ul>
                 <p className="text-5xl font-bold uppercase text-emerald-300 mb-[2rem]">

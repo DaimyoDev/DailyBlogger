@@ -32,14 +32,14 @@ function UserBlogs() {
           return (
             <div
               key={docSnapshot.id}
-              className="w-[50rem] bg-sky-700 rounded-lg mt-5 p-5 shadow-lg shadow-zinc-700"
+              className="w-[70rem] bg-sky-700 rounded-lg mt-5 p-5 shadow-lg shadow-zinc-700 text-center"
             >
               <ul className="flex flex-col justify-center items-center">
                 <Link to={`/${docSnapshot.id}`}>
                   <p className="text-4xl text-emerald-300 m-3 uppercase font-bold">
                     Title: {data.title}
                   </p>
-                  <p className="text-4xl text-emerald-300 m-3">
+                  <p className="text-2xl text-white m-3 text-center">
                     Description: {data.article}
                   </p>
                 </Link>
